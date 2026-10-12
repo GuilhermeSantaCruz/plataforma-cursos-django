@@ -27,7 +27,14 @@ section h2 {
     text-align: center;
 }
 
-footer p {
+main > h2 {
     text-align: center;
 }
 
+main > p {
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
+}
