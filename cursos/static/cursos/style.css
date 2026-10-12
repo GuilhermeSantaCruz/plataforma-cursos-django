@@ -18,3 +18,16 @@ header {
     padding: 20px;
     margin-bottom: 20px;
 }
+
+.cartao-curso h3 {
+    color: darkblue;
+}
+
+section h2 {
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
+}
+
