@@ -19,13 +19,13 @@
                         <h3>
                             {{ curso.nome }}
                         </h3>
-                        <p>
+                        <p class="preco-curso">
                             Valor: R$ {{ curso.preco|floatformat:2 }}
                         </p>
                         <p>
                             Carga horária: {{ curso.carga_horaria }} horas
                         </p>
-                        <p>
+                        <p class="categoria-curso">
                             Categoria: {{ curso.idcategoria.nome }}
                         </p>
                         <p>

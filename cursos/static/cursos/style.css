@@ -38,3 +38,13 @@ main > p {
 footer p {
     text-align: center;
 }
+
+.preco-curso {
+   font-weight: bold; 
+   color: darkblue;
+   font-size: 18px;
+}
+
+.categoria-curso {
+    color:#663399;
+}
