@@ -31,6 +31,8 @@
                         <p>
                             Instrutor: {{ curso.idinstrutor.nome }}
                         </p>
+                        <p>Identificador: {{ curso.id }}</p>
+                        <a href="{% url 'detalhes_curso' curso.idcurso %}">Ver detalhes</a>
                     </div>
                 {% endfor %}
             </section>

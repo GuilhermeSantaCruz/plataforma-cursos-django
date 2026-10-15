@@ -1,0 +1,18 @@
+
+<h2>
+    Curso: {{ curso.nome }}
+</h2>
+
+<p>
+    Valor: R$ {{ curso.preco|floatformat:2 }}
+</p>
+<p>
+    Carga horária: {{ curso.carga_horaria }} horas
+</p>
+<p>
+    Categoria: {{ curso.idcategoria.nome }}
+</p>
+<p>
+     Instrutor: {{ curso.idinstrutor.nome }}    
+</p>
+<a href="{% url 'home' %}">Voltar</a>
