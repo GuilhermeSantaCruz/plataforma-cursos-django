@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma de Cursos</title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'cursos/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>Aprenda novas habilidades com nossos cursos</h1>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock content %}    
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Plataforma de Cursos</p>
+        </footer>
+    </body>
+</html>

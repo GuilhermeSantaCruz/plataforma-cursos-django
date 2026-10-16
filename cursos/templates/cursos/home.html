@@ -1,46 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-{% load static %}
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plataforma de Cursos</title>
-        <link rel="stylesheet" href="{% static 'cursos/style.css' %}">
-    </head>
-    <body>
-        <header>
-            <h1>Aprenda novas habilidades com nossos cursos</h1>
-        </header>
-        <main>
-            <section>
-                <h2>Conheça nossos cursos</h2>       
-                {% for curso in cursos %}
-                    <div class="cartao-curso">
-                        <h3>
-                            {{ curso.nome }}
-                        </h3>
-                        <p class="preco-curso">
-                            Valor: R$ {{ curso.preco|floatformat:2 }}
-                        </p>
-                        <p>
-                            Carga horária: {{ curso.carga_horaria }} horas
-                        </p>
-                        <p class="categoria-curso">
-                            Categoria: {{ curso.idcategoria.nome }}
-                        </p>
-                        <p>
-                            Instrutor: {{ curso.idinstrutor.nome }}
-                        </p>
-                        <p>Identificador: {{ curso.id }}</p>
-                        <a href="{% url 'detalhes_curso' curso.idcurso %}">Ver detalhes</a>
-                    </div>
-                {% endfor %}
-            </section>
-            <h2>Comece sua jornada de aprendizado!</h2>
-            <p>Escolha um curso, amplie seus conhecimentos e dê o próximo passo na sua carreira profissional.</p>
-        </main>   
-        <footer>
-            <p>&copy; 2026 Plataforma de Cursos</p>
-        </footer> 
-    </body>
-</html>
+{% extends 'cursos/base.html' %}
+
+{% block content %}
+    <h2>Conheça nossos cursos</h2>       
+    {% for curso in cursos %}
+        <div class="cartao-curso">
+            <h3>
+                {{ curso.nome }}
+            </h3>
+            <p class="preco-curso">
+                Valor: R$ {{ curso.preco|floatformat:2 }}
+            </p>
+            <p>
+                Carga horária: {{ curso.carga_horaria }} horas
+            </p>
+            <p class="categoria-curso">
+                Categoria: {{ curso.idcategoria.nome }}
+            </p>
+            <p>
+                Instrutor: {{ curso.idinstrutor.nome }}
+            </p>
+            <a href="{% url 'detalhes_curso' curso.idcurso %}">Ver detalhes</a>
+        </div>
+    {% endfor %}
+{% endblock content %} 
