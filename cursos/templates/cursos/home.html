@@ -1,7 +1,14 @@
 {% extends 'cursos/base.html' %}
 
 {% block content %}
-    <h2>Conheça nossos cursos</h2>       
+    <h2>Conheça nossos cursos</h2> 
+    <nav>
+        <a href="/">Todos os cursos</a> |
+        <a href="/?categoria=Programação">Programação</a> |
+        <a href="/?categoria=Banco de Dados">Banco de Dados</a> |
+        <a href="/?categoria=Web">Web</a> |
+        <a href="/?categoria=DevOps">DevOps</a>
+    </nav> 
     {% for curso in cursos %}
         <div class="cartao-curso">
             <h3>

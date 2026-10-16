@@ -48,3 +48,12 @@ footer p {
 .categoria-curso {
     color:#663399;
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
