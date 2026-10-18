@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.conf import settings
 
 
 class Aluno(models.Model):
@@ -72,3 +73,21 @@ class Matricula(models.Model):
     class Meta:
         managed = False
         db_table = 'matricula'
+
+
+class PerfilAluno(models.Model):
+    usuario = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    aluno = models.OneToOneField(
+        Aluno,
+        on_delete=models.PROTECT
+    )
+
+    class Meta:
+        db_table = 'cursos_perfilaluno'
+
+    def __str__(self):
+        return self.aluno.nome 
