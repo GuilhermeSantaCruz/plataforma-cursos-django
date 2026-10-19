@@ -38,6 +38,9 @@ class Cidade(models.Model):
         managed = False
         db_table = 'cidade'
 
+    def __str__(self):
+        return self.nome    
+
 
 class Curso(models.Model):
     idcurso = models.AutoField(primary_key=True)

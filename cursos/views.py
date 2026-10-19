@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Curso, Aluno
+from .models import Curso, Aluno, PerfilAluno
 from .forms import CadastroUsuarioForm
 from django.contrib.auth import login
 from django.db import transaction
@@ -41,10 +41,15 @@ def cadastro(request):
                     usuario.first_name = form.cleaned_data["nome"]
                     usuario.save()
 
-                    Aluno.objects.create(
+                    aluno = Aluno.objects.create(
                         nome=form.cleaned_data["nome"],
                         email=email,
                         idcidade=form.cleaned_data["cidade"],
+                    )
+
+                    PerfilAluno.objects.create(
+                        usuario=usuario,
+                        aluno=aluno,
                     )
 
                 login(request, usuario)
