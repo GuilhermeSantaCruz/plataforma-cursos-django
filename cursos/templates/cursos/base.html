@@ -9,9 +9,26 @@
         <link rel="stylesheet" href="{% static 'cursos/style.css' %}">
     </head>
     <body>
-        <header>
-            <h1>Aprenda novas habilidades com nossos cursos</h1>
-        </header>
+        
+    <header>
+        <h1>Aprenda novas habilidades com nossos cursos</h1>
+
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+
+            {% if user.is_authenticated %}
+                <span>Olá, {{ user.first_name|default:user.username }}!</span>
+
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Sair</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Entrar</a>
+                <a href="{% url 'cadastro' %}">Criar conta</a>
+            {% endif %}
+        </nav>
+    </header>
 
         <main>
             {% block content %}
