@@ -1,0 +1,23 @@
+{% extends 'cursos/base.html' %}
+
+{% block content %}
+    <h2>Minhas matrículas</h2>
+
+    {% if matriculas %}
+        <ul>
+            {% for matricula in matriculas %}
+                <li>
+                    <h3>{{ matricula.idcurso.nome }}</h3>
+                    <p>Data da matrícula: {{ matricula.data_matricula|date:"d/m/Y" }}</p>
+                    <p>Status: {{ matricula.status }}</p>
+
+                    {% if matricula.nota is not None %}
+                        <p>Nota: {{ matricula.nota }}</p>
+                    {% endif %}    
+                </li>    
+            {% endfor %}    
+        </ul>
+    {% else %}
+        <p>Você ainda não possui matrículas.</p>    
+    {% endif %}
+{% endblock content %}        

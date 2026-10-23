@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Curso, Aluno, PerfilAluno
+from .models import Curso, Aluno, PerfilAluno, Matricula
 from .forms import CadastroUsuarioForm
 from django.contrib.auth import login
 from django.db import transaction
-
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -61,4 +61,10 @@ def cadastro(request):
     return render(request, "cursos/cadastro.html", context)
 
 
-   
+@login_required
+def minhas_matriculas(request):
+    perfil = PerfilAluno.objects.get(usuario=request.user)
+    matriculas = Matricula.objects.filter(idaluno=perfil.aluno).select_related('idcurso')
+    context = {"matriculas": matriculas}
+
+    return render(request, 'cursos/minhas_matriculas.html', context)   
