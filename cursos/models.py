@@ -79,15 +79,9 @@ class Matricula(models.Model):
 
 
 class PerfilAluno(models.Model):
-    usuario = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
+    usuario = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
 
-    aluno = models.OneToOneField(
-        Aluno,
-        on_delete=models.PROTECT
-    )
+    aluno = models.OneToOneField(Aluno,on_delete=models.PROTECT)
 
     class Meta:
         db_table = 'cursos_perfilaluno'
