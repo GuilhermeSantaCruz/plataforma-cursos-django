@@ -17,6 +17,10 @@
     <p>
         Instrutor: {{ curso.idinstrutor.nome }}    
     </p>
+    <form method="post" action="{% url 'matricular_curso' curso.pk %}">
+        {% csrf_token %}
+        <button type="submit">Matricular-se</button>
+    </form>
     <p>
         <a href="{% url 'home' %}">Voltar</a>
     </p>    

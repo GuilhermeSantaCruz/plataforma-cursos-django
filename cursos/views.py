@@ -4,6 +4,8 @@ from .forms import CadastroUsuarioForm
 from django.contrib.auth import login
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
+from datetime import date
+from django.views.decorators.http import require_POST
 
 
 def home(request):
@@ -68,3 +70,23 @@ def minhas_matriculas(request):
     context = {"matriculas": matriculas}
 
     return render(request, 'cursos/minhas_matriculas.html', context)   
+
+
+@login_required
+@require_POST
+def matricular_curso(request, pk):
+    curso = Curso.objects.get(idcurso=pk)
+    perfil = PerfilAluno.objects.get(usuario=request.user)
+    matricula_existente = Matricula.objects.filter(
+        idaluno=perfil.aluno,
+        idcurso=curso
+    ).exists()
+    if matricula_existente:
+        return redirect("minhas_matriculas")
+    Matricula.objects.create(
+        idaluno=perfil.aluno,
+        idcurso=curso,
+        data_matricula=date.today(),
+        status="Cursando"
+    )
+    return redirect("minhas_matriculas")
